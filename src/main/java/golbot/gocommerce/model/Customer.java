@@ -3,6 +3,7 @@ package golbot.gocommerce.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,7 +16,7 @@ public class Customer {
     public String email;
     public String phone;
     public String address;
-    public String postalCode;
+    public String postal_code;
     public String city;
 
     public String table = "customer";
@@ -24,7 +25,7 @@ public class Customer {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -78,13 +79,13 @@ public class Customer {
         this.address = address;
     }
 
-    @Column(name = "postalCode", nullable = true)
+    @Column(name = "postal_code", nullable = true)
     public String getPostalCode() {
-        return postalCode;
+        return postal_code;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostalCode(String postal_code) {
+        this.postal_code = postal_code;
     }
 
     @Column(name = "city", nullable = true)
