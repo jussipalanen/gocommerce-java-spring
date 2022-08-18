@@ -5,7 +5,7 @@ import java.util.List;
 
 import golbot.gocommerce.model.Customer;
 
-public class CustomerRepository {
+public class CustomCustomerRepository {
     
 
     public static Customer get(int id)
