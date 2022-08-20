@@ -1,0 +1,15 @@
+<div th:replace="fragments/header"></div>
+<h1 th:text="${title} ? ${title} : 'Nothing'"></h1>
+<form>
+    <label for="firstname">
+        Firstname
+    </label>
+    <input type="text" name="firstname" id="firstname">
+
+    <label for="lastname">
+        Lastname
+    </label>
+    <input type="text" name="lastname" id="lastname">
+    <input type="submit" value="Create">
+</form>
+<div th:replace="fragments/footer"></div>
