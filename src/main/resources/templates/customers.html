@@ -2,7 +2,27 @@
 <h1 th:text="${title} ? ${title} : 'Nothing'"></h1>
 <li>
     <a th:href="@{/customers/add}">
-        Add new customer
+        Add
     </a>
+
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.firstname}"></td>
+                <td th:text="${customer.lastname}"></td>
+                <td>
+                    <input class="js-edit-customer" type="button" value="Edit">
+                    <input class="js-delete-customer" type="button" value="Delete">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </li>
 <div th:replace="fragments/footer"></div>

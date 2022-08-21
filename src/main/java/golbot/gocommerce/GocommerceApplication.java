@@ -13,4 +13,11 @@ public class GocommerceApplication {
 		SpringApplication.run(GocommerceApplication.class, args);
 	}
 
+
+	@Override
+	public static void run()
+	{
+
+	}
+
 }
