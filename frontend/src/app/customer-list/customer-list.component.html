@@ -1,0 +1,28 @@
+<div class="customers">
+    <h2>List of the customers</h2>
+    <ul>
+        <li>
+            <a href="/customers/add">Add</a>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers">
+                <td>
+                    {{ customer.id }}
+                </td>
+                <td>
+                    {{ customer.firstname }}
+                </td>
+                <td>
+                    {{ customer.lastname }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

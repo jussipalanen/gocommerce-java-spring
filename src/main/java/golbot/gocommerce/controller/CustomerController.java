@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,8 @@ public class CustomerController
 {
     @Autowired
     private CustomerRepository customerRepo;
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = {"/customer", "/customer/{id}"})
     public ResponseEntity getCustomer(@PathVariable(required = true, name = "id") Integer id) throws ResourceNotFoundException 
     {
@@ -30,13 +33,14 @@ public class CustomerController
         return ResponseEntity.ok().body(customer);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/customers")
     public List<Customer> getAllCustomers()
     {
         return (List<Customer>) customerRepo.findAll();
     }    
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/customers")
     public ResponseEntity<Customer> createCustomer(@Validated @RequestBody Customer customer)
     {
