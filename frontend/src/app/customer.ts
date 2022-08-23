@@ -1,7 +1,11 @@
 export class Customer {
-    id!: string;
+    id!: number;
     firstname!: string;
     lastname!: string;
     email!: string;
     phone!: string;
+
+    constructor()
+    {
+    }   
 }

@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerService } from './customer.service';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerListComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    NavigationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

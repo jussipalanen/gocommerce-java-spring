@@ -18,6 +18,7 @@ import golbot.gocommerce.model.Customer;
 import golbot.gocommerce.repositories.CustomerRepository;
 import golbot.gocommerce.resources.ResourceNotFoundException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1")
 public class CustomerController
@@ -25,30 +26,27 @@ public class CustomerController
     @Autowired
     private CustomerRepository customerRepo;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(path = {"/customer", "/customer/{id}"})
+    @GetMapping("/customers/{id}")
     public ResponseEntity getCustomer(@PathVariable(required = true, name = "id") Integer id) throws ResourceNotFoundException 
     {
         Customer customer = customerRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
         return ResponseEntity.ok().body(customer);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/customers")
     public List<Customer> getAllCustomers()
     {
         return (List<Customer>) customerRepo.findAll();
     }    
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/customers")
     public ResponseEntity<Customer> createCustomer(@Validated @RequestBody Customer customer)
     {
         return ResponseEntity.ok().body(customerRepo.save(customer));
     }
 
-    @PutMapping(path = {"/customer", "/customer/{id}"})
-    public ResponseEntity<String> updateCustomer(@PathVariable(value = "id") Integer id, @Validated @RequestBody Customer customerDetails) throws ResourceNotFoundException
+    @PutMapping("/customers/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") Integer id, @Validated @RequestBody Customer customerDetails) throws ResourceNotFoundException
     {
         Customer customer = customerRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
         if( customerDetails.getFirstname() != null ) { customer.setFirstname( customerDetails.getFirstname() ); }
@@ -57,6 +55,6 @@ public class CustomerController
         if( customerDetails.getPhone() != null ) { customer.setPhone( customerDetails.getPhone() ); }
         if( customerDetails.getPostalCode() != null ) { customer.setPostalCode( customerDetails.getPostalCode() ); }
         final Customer updatedCustomer = customerRepo.save( customer );
-        return ResponseEntity.ok("User has been updated successfully!");
+        return ResponseEntity.ok().body(updatedCustomer);
     }
 }

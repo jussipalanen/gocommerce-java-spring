@@ -1,13 +1,4 @@
 package golbot.gocommerce;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.*;
-
-import golbot.gocommerce.model.Customer;
-
 public class SiteConfig {
     public static String title = "GoCommerce";
     public static String baseUrl = "http:://localhost:9000";
